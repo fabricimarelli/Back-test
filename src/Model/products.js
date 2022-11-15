@@ -21,14 +21,6 @@ const ProductSchema = Schema({
     type: String,
     required: [true, 'Price is required'],
   },
-  email: {
-    type: String,
-    //required: [false, 'Email is required'],
-  },
-  password: {
-    type: String,
-   // required: [false, 'Password is required'],
-  },
 });
 
 module.exports = model('Product', ProductSchema);

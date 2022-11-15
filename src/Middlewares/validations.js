@@ -16,9 +16,9 @@ const validations = () => {
       .isString()
       .trim()
       .custom(validationStringContainNumbers),
-    body('email', 'Email is required').optional().notEmpty().isEmail().trim(),
-    body('password', 'Password is required').optional().notEmpty().isString().trim(),
   ];
 };
 
 module.exports = validations;
+
+//OK

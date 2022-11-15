@@ -1,7 +1,5 @@
 const { request, response } = require('express');
 const Product = require('../Model/products');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 
 
 const getProducts = async (req = request, res = response) => {
@@ -69,10 +67,6 @@ const postProduct = async (req = request, res = response) => {
         error: 'Error, existing product',
       });
     } else {
-      if(product.password){
-        product.password = await bcrypt.hash(req.body.password, 12);
-
-      }
       await product.save();
       res.status(201).json({ message:'Product added successfully', data: product });
     }
@@ -132,5 +126,4 @@ module.exports = {
   postProduct,
   putProduct,
   deleteProduct,
-  /*login,*/
 };

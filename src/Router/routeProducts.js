@@ -6,12 +6,9 @@ const {
   postProduct,
   putProduct,
   deleteProduct,
-  /*login,*/
 } = require('../Controller/productsController');
 const validations = require('../Middlewares/validations');
-const loginValidations = require('../Middlewares/loginvalidations');
 const fieldValidation = require('../Middlewares/fieldValidations');
-const isLoggedIn = require('../Middlewares/isLoggedIn');
 const router = Router();
 
 router.get(
@@ -33,23 +30,19 @@ router.get(
 );
 
 router.post('/', [...validations(), fieldValidation], 
-/*isLoggedIn,*/ 
 postProduct);
 
 router.put(
   '/:id',
   [param('id').isMongoId(), ...validations(), fieldValidation],
-  /*isLoggedIn,*/
   putProduct
 );
 
 router.delete(
   '/:id',
   [param('id').isMongoId(), fieldValidation],
-  /*isLoggedIn,*/
   deleteProduct
 );
 
-//router.post('/login', [...loginValidations(), fieldValidation], login);
 
 module.exports = router;
